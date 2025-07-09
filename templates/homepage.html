@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Just Fix - Professional Home Services{% endblock %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 3rem;">
+    <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">
+        <i class="fas fa-tools" style="color: #007bff;"></i> Welcome to Just Fix
+    </h1>
+    <p style="color: #f8f9fa; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+        Your one-stop solution for all home service needs. Professional, reliable, and fast service guaranteed.
+    </p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 3rem; color: #007bff; margin-bottom: 1rem;">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <h3 style="color: #333; margin-bottom: 1rem;">Electrical Services</h3>
+        <p style="color: #666; margin-bottom: 1.5rem;">
+            Professional electrical repairs, installations, and maintenance. From wiring to lighting solutions.
+        </p>
+        <ul style="text-align: left; color: #666; margin-bottom: 1.5rem;">
+            <li>• Circuit repairs and installations</li>
+            <li>• Lighting fixtures and switches</li>
+            <li>• Electrical safety inspections</li>
+            <li>• Power outlet installations</li>
+        </ul>
+    </div>
+
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 3rem; color: #007bff; margin-bottom: 1rem;">
+            <i class="fas fa-wrench"></i>
+        </div>
+        <h3 style="color: #333; margin-bottom: 1rem;">Plumbing Services</h3>
+        <p style="color: #666; margin-bottom: 1.5rem;">
+            Expert plumbing solutions for all your water and drainage needs. Available 24/7 for emergencies.
+        </p>
+        <ul style="text-align: left; color: #666; margin-bottom: 1.5rem;">
+            <li>• Leak detection and repair</li>
+            <li>• Pipe installations and replacements</li>
+            <li>• Drain cleaning and unclogging</li>
+            <li>• Fixture installations</li>
+        </ul>
+    </div>
+
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 3rem; color: #007bff; margin-bottom: 1rem;">
+            <i class="fas fa-hammer"></i>
+        </div>
+        <h3 style="color: #333; margin-bottom: 1rem;">Carpentry Services</h3>
+        <p style="color: #666; margin-bottom: 1.5rem;">
+            Skilled carpentry work for furniture, repairs, and custom woodwork. Quality craftsmanship guaranteed.
+        </p>
+        <ul style="text-align: left; color: #666; margin-bottom: 1.5rem;">
+            <li>• Furniture assembly and repair</li>
+            <li>• Custom shelving and storage</li>
+            <li>• Door and window installations</li>
+            <li>• Deck and fence construction</li>
+        </ul>
+    </div>
+
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 3rem; color: #007bff; margin-bottom: 1rem;">
+            <i class="fas fa-key"></i>
+        </div>
+        <h3 style="color: #333; margin-bottom: 1rem;">Locksmith Services</h3>
+        <p style="color: #666; margin-bottom: 1.5rem;">
+            Professional locksmith services for home and office security. Emergency lockout assistance available.
+        </p>
+        <ul style="text-align: left; color: #666; margin-bottom: 1.5rem;">
+            <li>• Lock installation and replacement</li>
+            <li>• Emergency lockout assistance</li>
+            <li>• Key duplication and cutting</li>
+            <li>• Security system installations</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);">
+    <h2 style="color: #333; margin-bottom: 1rem;">Ready to Get Started?</h2>
+    <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem;">
+        Submit a complaint for any of our services and get connected with verified professionals in your area.
+    </p>
+    {% if session.user_id %}
+        <a href="{{ url_for('complaint') }}" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem;">
+            <i class="fas fa-plus"></i> Submit a Service Request
+        </a>
+    {% else %}
+        <div>
+            <a href="{{ url_for('signup') }}" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem; margin-right: 1rem;">
+                <i class="fas fa-user-plus"></i> Sign Up Now
+            </a>
+            <a href="{{ url_for('login') }}" class="btn btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+<div style="margin-top: 3rem; text-align: center;">
+    <h3 style="color: white; margin-bottom: 1.5rem;">Why Choose Just Fix?</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+        <div style="color: #f8f9fa;">
+            <i class="fas fa-clock" style="font-size: 2rem; color: #007bff; margin-bottom: 0.5rem;"></i>
+            <h4>Fast Response</h4>
+            <p>Quick response times for all service requests</p>
+        </div>
+        <div style="color: #f8f9fa;">
+            <i class="fas fa-shield-alt" style="font-size: 2rem; color: #007bff; margin-bottom: 0.5rem;"></i>
+            <h4>Verified Professionals</h4>
+            <p>All our service providers are verified and insured</p>
+        </div>
+        <div style="color: #f8f9fa;">
+            <i class="fas fa-dollar-sign" style="font-size: 2rem; color: #007bff; margin-bottom: 0.5rem;"></i>
+            <h4>Fair Pricing</h4>
+            <p>Transparent and competitive pricing for all services</p>
+        </div>
+        <div style="color: #f8f9fa;">
+            <i class="fas fa-star" style="font-size: 2rem; color: #007bff; margin-bottom: 0.5rem;"></i>
+            <h4>Quality Guarantee</h4>
+            <p>100% satisfaction guarantee on all work performed</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

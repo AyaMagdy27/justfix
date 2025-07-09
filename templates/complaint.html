@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Service Request - Just Fix{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 2rem auto;">
+    <div class="card">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="color: #333; margin-bottom: 0.5rem;">
+                <i class="fas fa-plus-circle" style="color: #007bff;"></i> Submit Service Request
+            </h2>
+            <p style="color: #666;">Tell us about your service needs and we'll connect you with the right professional.</p>
+        </div>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="service_type">
+                    <i class="fas fa-cogs"></i> Service Type
+                </label>
+                <select id="service_type" name="service_type" required>
+                    <option value="">Select a service type</option>
+                    <option value="electrical">
+                        🔌 Electrical Services - Wiring, outlets, lighting, electrical repairs
+                    </option>
+                    <option value="plumbing">
+                        🔧 Plumbing Services - Leaks, pipes, drains, fixture installations
+                    </option>
+                    <option value="carpenter">
+                        🔨 Carpentry Services - Furniture, repairs, custom woodwork
+                    </option>
+                    <option value="locksmith">
+                        🔑 Locksmith Services - Locks, keys, security, lockouts
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="title">
+                    <i class="fas fa-heading"></i> Service Title
+                </label>
+                <input type="text" id="title" name="title" required
+                       placeholder="Brief description of what you need (e.g., 'Fix leaking kitchen faucet')">
+            </div>
+
+            <div class="form-group">
+                <label for="description">
+                    <i class="fas fa-comment-alt"></i> Detailed Description
+                </label>
+                <textarea id="description" name="description" rows="5" required
+                          placeholder="Please provide detailed information about the issue, including:
+• What exactly is the problem?
+• When did it start?
+• Have you tried anything to fix it?
+• Any specific requirements or preferences?
+• Preferred time for service?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">
+                    <i class="fas fa-phone"></i> Phone Number
+                </label>
+                <input type="tel" id="phone" name="phone" required
+                       placeholder="Your phone number for service provider contact">
+            </div>
+
+            <div class="form-group">
+                <label for="address">
+                    <i class="fas fa-map-marker-alt"></i> Service Address
+                </label>
+                <textarea id="address" name="address" rows="3" required
+                          placeholder="Full address where service is needed:
+Street address, apartment/unit number, city, state, zip code"></textarea>
+            </div>
+
+            <div style="background: rgba(0, 123, 255, 0.1); padding: 1.5rem; border-radius: 5px; border-left: 4px solid #007bff; margin-bottom: 2rem;">
+                <h4 style="color: #333; margin-bottom: 1rem;">
+                    <i class="fas fa-info-circle"></i> What happens next?
+                </h4>
+                <ol style="color: #333; margin: 0; padding-left: 1.5rem;">
+                    <li>We'll review your service request</li>
+                    <li>Match you with a qualified professional in your area</li>
+                    <li>The service provider will contact you within 24 hours</li>
+                    <li>Schedule a convenient time for the service</li>
+                    <li>Get your problem fixed by a verified professional</li>
+                </ol>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                    <i class="fas fa-paper-plane"></i> Submit Service Request
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <div class="card" style="background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(0, 123, 255, 0.1) 100%);">
+            <h3 style="color: #333; margin-bottom: 1rem; text-align: center;">
+                <i class="fas fa-shield-alt"></i> Service Guarantee
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center;">
+                <div>
+                    <i class="fas fa-user-check" style="font-size: 2rem; color: #28a745; margin-bottom: 0.5rem;"></i>
+                    <h4 style="color: #333;">Verified Professionals</h4>
+                    <p style="color: #666; font-size: 0.9rem;">All service providers are background checked and insured</p>
+                </div>
+                <div>
+                    <i class="fas fa-clock" style="font-size: 2rem; color: #007bff; margin-bottom: 0.5rem;"></i>
+                    <h4 style="color: #333;">Quick Response</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Average response time under 24 hours</p>
+                </div>
+                <div>
+                    <i class="fas fa-star" style="font-size: 2rem; color: #ffc107; margin-bottom: 0.5rem;"></i>
+                    <h4 style="color: #333;">Quality Work</h4>
+                    <p style="color: #666; font-size: 0.9rem;">100% satisfaction guarantee on all services</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add some interactivity to the service type selection
+    document.getElementById('service_type').addEventListener('change', function() {
+        const serviceType = this.value;
+        const titleInput = document.getElementById('title');
+        const descriptionInput = document.getElementById('description');
+
+        let placeholder = '';
+        let descriptionPlaceholder = '';
+
+        switch(serviceType) {
+            case 'electrical':
+                placeholder = 'e.g., Install new ceiling fan, Fix flickering lights, Replace electrical outlet';
+                descriptionPlaceholder = 'Please describe your electrical issue in detail:\n• What electrical component needs attention?\n• Is this an emergency or safety concern?\n• Any specific brand or type preferences?\n• Preferred service time?';
+                break;
+            case 'plumbing':
+                placeholder = 'e.g., Fix leaking faucet, Unclog bathroom drain, Install new toilet';
+                descriptionPlaceholder = 'Please describe your plumbing issue in detail:\n• Location of the problem (kitchen, bathroom, etc.)\n• How long has this been an issue?\n• Is water damage a concern?\n• Preferred service time?';
+                break;
+            case 'carpenter':
+                placeholder = 'e.g., Build custom shelves, Repair wooden deck, Assemble furniture';
+                descriptionPlaceholder = 'Please describe your carpentry needs in detail:\n• Type of wood or materials preferred?\n• Measurements or dimensions needed?\n• Any specific design requirements?\n• Preferred service time?';
+                break;
+            case 'locksmith':
+                placeholder = 'e.g., Locked out of house, Install new deadbolt, Duplicate keys';
+                descriptionPlaceholder = 'Please describe your locksmith needs in detail:\n• Type of lock or security system?\n• Is this an emergency lockout?\n• Any specific security requirements?\n• Preferred service time?';
+                break;
+        }
+
+        if (placeholder) {
+            titleInput.placeholder = placeholder;
+            descriptionInput.placeholder = descriptionPlaceholder;
+        }
+    });
+</script>
+{% endblock %}
